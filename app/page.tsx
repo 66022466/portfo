@@ -12,8 +12,8 @@ export default function Home() {
               className="rounded-full"
               src="/profile-picture.jpg" // เปลี่ยนเป็นรูปโปรไฟล์ของคุณ
               alt="Profile Picture"
-              width={150}
-              height={150}
+              width={400}
+              height={400}
             />
           </div>
           <h1 className="text-4xl font-bold text-gray-800">Portfolio</h1>
