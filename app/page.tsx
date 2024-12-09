@@ -10,7 +10,7 @@ export default function Home() {
           <div className="w-36 h-36 bg-gray-200 rounded-full flex items-center justify-center">
             <Image
               className="rounded-full"
-              src="/profile-picture.jpg" // เปลี่ยนเป็นรูปโปรไฟล์ของคุณ
+              src="/profile-picture.jpg" 
               alt="Profile Picture"
               width={150}
               height={150}
@@ -19,7 +19,7 @@ export default function Home() {
           <h1 className="text-4xl font-bold text-gray-800">Portfolio</h1>
           <p className="mt-4 text-lg text-gray-600">Name | Jidapa Ruamsuk</p>
           <p className="mt-4 text-lg text-gray-600">Age: 20 | Student ID: 66022466</p>
-          <p className="mt-4 text-lg text-gray-600">Contact | tel.088 55X 748X</p>
+          <p className="mt-4 text-lg text-gray-600">Contact | tel.088 553 7484</p>
         </div>
       </section>
 
