@@ -1,70 +1,114 @@
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
+  const [profilePic, setProfilePic] = useState("/default-profile.png"); // ใช้รูปโปรไฟล์เริ่มต้น
+
+  // ฟังก์ชันสำหรับอัพโหลดรูปโปรไฟล์
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilePic(reader.result); // อัพเดตรูปโปรไฟล์
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-sans">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full max-w-3xl">
-        {/* Header */}
-        <div className="flex flex-col items-center gap-4 sm:items-start">
-          <Image
-            src="/profile.jpg" // รูปภาพจะถูกใส่ในโฟลเดอร์ public
-            alt="Profile Picture"
-            width={150}
-            height={150}
-            className="rounded-full border-4 border-gray-300"
+    <div className="flex flex-col items-center min-h-screen px-6 py-12 space-y-16 bg-gray-50 sm:px-12">
+      {/* Section: Introduction */}
+      <section className="text-center">
+        <h1 className="text-4xl font-bold text-gray-800">Portfolio</h1>
+        <p className="mt-4 text-lg text-gray-600">Name | Sutthiwit Sriyotha</p>
+        <p className="mt-4 text-lg text-gray-600">Age: 20 | Student ID: 66022961</p>
+        <p className="mt-4 text-lg text-gray-600">Contact | tel.0934918615</p>
+      </section>
+
+      {/* Section: Profile Picture */}
+      <section className="w-full max-w-3xl space-y-6 text-center">
+        <h2 className="text-2xl font-semibold text-gray-800">Profile Picture</h2>
+        <div className="flex flex-col items-center">
+          <div className="w-36 h-36 bg-gray-200 rounded-full flex items-center justify-center">
+            <Image
+              className="rounded-full"
+              src={profilePic} // ใช้ค่าที่ได้จากการเลือกไฟล์
+              alt="Profile Picture"
+              width={150}
+              height={150}
+            />
+          </div>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="mt-4"
           />
-          <h1 className="text-3xl font-bold text-center sm:text-left">
-            Jidapa Ruamsuk
-          </h1>
-          <p className="text-lg text-gray-600 text-center sm:text-left">
-            Web Developer | Frontend Enthusiast | Problem Solver
-          </p>
         </div>
+      </section>
 
-        {/* About Section */}
-        <section className="flex flex-col gap-6">
-          <h2 className="text-2xl font-semibold">About Me</h2>
-          <p className="text-gray-700">
-            Hi, I'm Jidapa, a passionate web developer with a love for creating
-            beautiful and user-friendly web applications. With 2 years of
-            experience in frontend development, I specialize in React and
-            Next.js.
-          </p>
-        </section>
-
-        {/* Skills Section */}
-        <section className="flex flex-col gap-6">
-          <h2 className="text-2xl font-semibold">Skills</h2>
-          <ul className="list-disc list-inside text-gray-700">
-            <li>Frontend: HTML, CSS, JavaScript, React, Next.js</li>
-            <li>Backend: Node.js, Express, MongoDB</li>
-            <li>Tools: Git, Figma, Vercel</li>
-          </ul>
-        </section>
-
-        {/* Experience Section */}
-        <section className="flex flex-col gap-6">
-          <h2 className="text-2xl font-semibold">Experience</h2>
-          <ul className="list-none space-y-4">
-            <li className="border-l-4 border-gray-300 pl-4">
-              <h3 className="font-bold">Frontend Developer</h3>
-              <p className="text-sm text-gray-600">ABC Company | 2022-2023</p>
-              <p className="text-gray-700">
-                Developed and maintained the company's e-commerce platform using
-                React and Next.js.
-              </p>
+      {/* Section: Skills */}
+      <section className="w-full max-w-3xl space-y-6 text-center">
+        <h2 className="text-2xl font-semibold text-gray-800">About Me</h2>
+        <p className="text-gray-700">
+          I am a passionate software engineering student with experience in data collection, analysis, test case development, 
+          and Scrum teamwork. I have a solid foundation in various programming technologies and tools.
+        </p>
+        <div className="mt-4 text-left">
+          <h3 className="text-xl font-semibold text-gray-800">Skills</h3>
+          <ul className="mt-4 space-y-2 list-disc list-inside text-gray-700">
+            <li>
+              <strong>Data Collection & Analysis:</strong> Experience in gathering, processing, and analyzing data to derive insights and support decision-making.
             </li>
-            <li className="border-l-4 border-gray-300 pl-4">
-              <h3 className="font-bold">Web Development Intern</h3>
-              <p className="text-sm text-gray-600">XYZ Solutions | 2021</p>
-              <p className="text-gray-700">
-                Assisted in creating landing pages and optimized website
-                performance.
-              </p>
+            <li>
+              <strong>Test Case Development:</strong> Developed structured test cases to validate software functionality and performance.
+            </li>
+            <li>
+              <strong>Scrum Teamwork:</strong> Worked collaboratively in Agile Scrum teams to deliver high-quality software solutions.
+            </li>
+            <li>
+              <strong>Programming Skills:</strong> Proficiency in HTML, CSS, JavaScript, Python, and Git for version control and collaboration.
             </li>
           </ul>
-        </section>
-      </main>
+        </div>
+      </section>
+
+      {/* Section: Projects */}
+      <section className="w-full max-w-4xl">
+        <h2 className="mb-8 text-2xl font-semibold text-center text-gray-800">My Projects</h2>
+        <div className="grid gap-6 sm:grid-cols-2">
+          {/* Project 1 */}
+          <div className="flex flex-col items-center p-6 space-y-4 border rounded-lg shadow bg-white">
+            <Image
+              className="rounded-md"
+              src="/project1.png"
+              alt="appTamroi - Selling Plants"
+              width={300}
+              height={200}
+            />
+            <h3 className="text-xl font-semibold text-gray-800">appTamroi - Selling Plants</h3>
+            <p className="text-sm text-gray-600">
+              An application designed to sell plants, providing a seamless interface for browsing and purchasing products.
+            </p>
+          </div>
+
+          {/* Project 2 */}
+          <div className="flex flex-col items-center p-6 space-y-4 border rounded-lg shadow bg-white">
+            <Image
+              className="rounded-md"
+              src="/project2.png"
+              alt="appTamroi - Food Recommendation"
+              width={300}
+              height={200}
+            />
+            <h3 className="text-xl font-semibold text-gray-800">appTamroi - Food Recommendation</h3>
+            <p className="text-sm text-gray-600">
+              An application to recommend food dishes based on user preferences and past choices.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
