@@ -7,7 +7,7 @@ export default function Home() {
         {/* Header */}
         <div className="flex flex-col items-center gap-4 sm:items-start">
           <Image
-            src="/profile.jpg" // ใส่ URL รูปโปรไฟล์ของคุณ
+            src="/profile.jpg" // รูปภาพจะถูกใส่ในโฟลเดอร์ public
             alt="Profile Picture"
             width={150}
             height={150}
