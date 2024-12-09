@@ -1,51 +1,14 @@
-import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
-  const [profilePic, setProfilePic] = useState("/default-profile.png"); // ใช้รูปโปรไฟล์เริ่มต้น
-
-  // ฟังก์ชันสำหรับอัพโหลดรูปโปรไฟล์
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfilePic(reader.result); // อัพเดตรูปโปรไฟล์
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   return (
     <div className="flex flex-col items-center min-h-screen px-6 py-12 space-y-16 bg-gray-50 sm:px-12">
       {/* Section: Introduction */}
       <section className="text-center">
         <h1 className="text-4xl font-bold text-gray-800">Portfolio</h1>
-        <p className="mt-4 text-lg text-gray-600">Name | Sutthiwit Sriyotha</p>
-        <p className="mt-4 text-lg text-gray-600">Age: 20 | Student ID: 66022961</p>
-        <p className="mt-4 text-lg text-gray-600">Contact | tel.0934918615</p>
-      </section>
-
-      {/* Section: Profile Picture */}
-      <section className="w-full max-w-3xl space-y-6 text-center">
-        <h2 className="text-2xl font-semibold text-gray-800">Profile Picture</h2>
-        <div className="flex flex-col items-center">
-          <div className="w-36 h-36 bg-gray-200 rounded-full flex items-center justify-center">
-            <Image
-              className="rounded-full"
-              src={profilePic} // ใช้ค่าที่ได้จากการเลือกไฟล์
-              alt="Profile Picture"
-              width={150}
-              height={150}
-            />
-          </div>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="mt-4"
-          />
-        </div>
+        <p className="mt-4 text-lg text-gray-600">Name | </p>
+        <p className="mt-4 text-lg text-gray-600">Age: 20 | Student ID: </p>
+        <p className="mt-4 text-lg text-gray-600">contact | tel.</p>
       </section>
 
       {/* Section: Skills */}
